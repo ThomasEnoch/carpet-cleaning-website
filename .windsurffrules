@@ -1,0 +1,89 @@
+# Carpet Cleaning Website Project Rules
+
+## Code Style and Organization
+- Use TypeScript for all components and pages
+- Follow React functional component patterns
+- Use shadcn/ui components for consistent UI
+- Maintain responsive design for all screen sizes
+- Keep components modular and reusable
+
+## Component Structure
+- Place reusable components in /components directory
+- Place page components in /app directory following Next.js 13+ conventions
+- Use proper TypeScript interfaces and types
+- Implement proper prop validation
+- Follow atomic design principles where applicable
+
+## Styling
+- Use Tailwind CSS for styling
+- Follow mobile-first approach
+- Use brand colors defined in tailwind.config.js
+- Maintain consistent spacing and padding
+- Use proper responsive classes
+
+## State Management
+- Use React hooks for local state
+- Implement form validation where needed
+- Handle loading and error states appropriately
+
+## Navigation
+- Keep navigation simple and intuitive
+- Main pages: Home, Services, Gallery, Contact
+- Quote form accessible via floating button
+- Estimate wizard integrated into quote form
+
+## Forms and User Input
+- Validate all user inputs
+- Show clear error messages
+- Implement proper form submission handling
+- Maintain real-time estimate calculations
+- Minimum charge: $150 for any service
+
+## Service Pricing Rules
+- Base rates per square foot:
+  - Carpet Steam: $0.35
+  - Carpet Low Moisture: $0.30
+  - Grout & Tile: $0.45
+- Frequency discounts:
+  - Monthly: 15%
+  - Quarterly: 10%
+  - Yearly: 5%
+- Add-on rates:
+  - Spot Treatment: $0.10/sq ft
+  - Deodorizing: $0.08/sq ft
+  - Protective Coating: $0.15/sq ft
+  - Sanitizing: $0.12/sq ft
+  - Furniture Moving: $75 flat rate
+
+## Performance
+- Optimize images using next/image
+- Implement proper loading states
+- Minimize bundle size
+- Use proper caching strategies
+
+## Accessibility
+- Follow WCAG guidelines
+- Implement proper ARIA labels
+- Ensure keyboard navigation
+- Maintain sufficient color contrast
+- Support screen readers
+
+## SEO
+- Implement proper meta tags
+- Use semantic HTML
+- Include alt text for images
+- Optimize for local SEO
+- Follow URL structure conventions
+
+## Error Handling
+- Implement proper error boundaries
+- Show user-friendly error messages
+- Log errors appropriately
+- Graceful fallbacks for failures
+
+## Testing
+- Write unit tests for critical components
+- Test form validation
+- Test responsive design
+- Test accessibility
+- Test cross-browser compatibility
