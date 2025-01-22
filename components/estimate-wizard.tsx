@@ -117,7 +117,15 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
             </p>
           </div>
           
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault()
+              if (step === 1) {
+                setStep(2)
+              }
+            }}
+            className="space-y-4"
+          >
             <Tabs value={String(step)} onValueChange={(value) => setStep(Number(value))}>
               <TabsList className="grid w-full grid-cols-2 bg-white shadow-sm">
                 <TabsTrigger 
@@ -146,10 +154,20 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                     <Label htmlFor="businessName" className="text-gray-700">Business Name</Label>
                     <Input
                       id="businessName"
+                      name="businessName"
+                      type="text"
+                      inputMode="text"
+                      autoComplete="organization"
                       placeholder="Enter your business name"
                       value={formData.businessName}
                       onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                       className="bg-white border-gray-200"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          document.getElementById('contactName')?.focus()
+                        }
+                      }}
                     />
                   </div>
 
@@ -157,10 +175,20 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                     <Label htmlFor="contactName" className="text-gray-700">Contact Name</Label>
                     <Input
                       id="contactName"
+                      name="contactName"
+                      type="text"
+                      inputMode="text"
+                      autoComplete="name"
                       placeholder="Enter contact person's name"
                       value={formData.contactName}
                       onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                       className="bg-white border-gray-200"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault()
+                          document.getElementById('email')?.focus()
+                        }
+                      }}
                     />
                   </div>
 
@@ -169,11 +197,20 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                       <Label htmlFor="email" className="text-gray-700">Email</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
+                        inputMode="email"
+                        autoComplete="email"
                         placeholder="Enter email address"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="bg-white border-gray-200"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault()
+                            document.getElementById('phone')?.focus()
+                          }
+                        }}
                       />
                     </div>
 
@@ -181,11 +218,20 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                       <Label htmlFor="phone" className="text-gray-700">Phone</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
                         placeholder="Enter phone number"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="bg-white border-gray-200"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault()
+                            document.getElementById('address')?.focus()
+                          }
+                        }}
                       />
                     </div>
                   </div>
@@ -194,15 +240,22 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                     <Label htmlFor="address" className="text-gray-700">Business Address</Label>
                     <Textarea
                       id="address"
+                      name="address"
                       placeholder="Enter your business address"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                       className="bg-white border-gray-200 min-h-[80px]"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault()
+                          setStep(2)
+                        }
+                      }}
                     />
                   </div>
                 </div>
 
-                <div className="flex justify-end gap-4 mt-6">
+                <div className="flex justify-between gap-4 mt-6 sticky bottom-0 bg-white py-4 border-t">
                   <Button
                     type="button"
                     variant="outline"
@@ -211,18 +264,30 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                   >
                     Cancel
                   </Button>
-                  <Button
-                    type="button"
-                    className="bg-brand-primary hover:bg-brand-primary/90 text-white"
-                    onClick={() => setStep(2)}
-                  >
-                    Next Step
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => {
+                        // Blur any focused input to hide mobile keyboard
+                        const activeElement = document.activeElement as HTMLElement
+                        activeElement?.blur()
+                      }}
+                      className="sm:hidden border-gray-200 text-gray-700 hover:bg-gray-50"
+                    >
+                      Done
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="bg-brand-primary hover:bg-brand-primary/90 text-white"
+                    >
+                      Next Step
+                    </Button>
+                  </div>
                 </div>
               </TabsContent>
 
               <TabsContent value="2" className="mt-6">
-                {/* Form content */}
                 <div className="space-y-6">
                   <div>
                     <Label className="text-gray-700 mb-2 block">Square Footage: {formData.squareFootage} sq ft</Label>
