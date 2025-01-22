@@ -255,35 +255,13 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                   </div>
                 </div>
 
-                <div className="flex justify-between gap-4 mt-6 sticky bottom-0 bg-white py-4 border-t">
+                <div className="flex justify-end gap-4 mt-6 sticky bottom-0 bg-white py-4 border-t">
                   <Button
-                    type="button"
-                    variant="outline"
-                    onClick={onClose}
-                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                    type="submit"
+                    className="bg-brand-primary hover:bg-brand-primary/90 text-white"
                   >
-                    Cancel
+                    Next Step
                   </Button>
-                  <div className="flex gap-2">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => {
-                        // Blur any focused input to hide mobile keyboard
-                        const activeElement = document.activeElement as HTMLElement
-                        activeElement?.blur()
-                      }}
-                      className="sm:hidden border-gray-200 text-gray-700 hover:bg-gray-50"
-                    >
-                      Done
-                    </Button>
-                    <Button
-                      type="submit"
-                      className="bg-brand-primary hover:bg-brand-primary/90 text-white"
-                    >
-                      Next Step
-                    </Button>
-                  </div>
                 </div>
               </TabsContent>
 
@@ -587,14 +565,6 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                   )}
 
                   <div className="flex justify-end gap-4 pt-4">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={onClose}
-                      className="border-gray-200 text-gray-700 hover:bg-gray-50"
-                    >
-                      Cancel
-                    </Button>
                     <Button
                       type="submit"
                       className="bg-brand-primary hover:bg-brand-primary/90 text-white"
