@@ -257,10 +257,18 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
 
                 <div className="flex justify-end gap-4 mt-6 sticky bottom-0 bg-white py-4 border-t">
                   <Button
+                    type="button"
+                    variant="outline"
+                    onClick={onClose}
+                    className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                  >
+                    Contact
+                  </Button>
+                  <Button
                     type="submit"
                     className="bg-brand-primary hover:bg-brand-primary/90 text-white"
                   >
-                    Next Step
+                    Create Estimate
                   </Button>
                 </div>
               </TabsContent>
@@ -569,7 +577,7 @@ export default function EstimateWizard({ isOpen, onClose }: EstimateWizardProps)
                       type="submit"
                       className="bg-brand-primary hover:bg-brand-primary/90 text-white"
                     >
-                      Submit Request
+                      Create Estimate
                     </Button>
                   </div>
                 </div>
